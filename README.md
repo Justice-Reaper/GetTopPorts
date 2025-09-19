@@ -14,11 +14,12 @@ Example: ./getTopPorts.sh --protocol TCP --number-of-ports 1000 --format one-per
 # Usage
 
 ```
-# ./getTopPorts.sh --protocol TCP --number-of-ports 8000 --format one-per-line      
-Getting 8000 most common TCP ports in one-per-line format...
+# ./getTopPorts.sh --protocol TCP --number-of-ports 8000 --format inline
+Created directory: inline/
+Getting 8000 most common TCP ports in inline format...
 Process completed ✓
-Number of ports obtained: 8000
-TCP ports saved in: top-8000-tcp-ports.txt
-Format: one-per-line
+Number of ports obtained: 7999
+TCP ports saved in: inline/top-8000-tcp-ports.txt
+Format: inline
 Content copied to clipboard ✓
 ```
