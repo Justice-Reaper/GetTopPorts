@@ -51,7 +51,7 @@ if [ -z "$PROTOCOL" ] || [ -z "$NUM_PORTS" ] || [ -z "$FORMAT" ]; then
     show_usage
 fi
 
-# Validate protocol (only uppercase allowed)
+# Validate protocol
 case "$PROTOCOL" in
     TCP|UDP|SCTP)
         # Valid protocol
@@ -98,8 +98,14 @@ fi
 # Convert protocol to lowercase for filename but keep original for display
 PROTOCOL_LOWER=$(echo "$PROTOCOL" | tr '[:upper:]' '[:lower:]')
 
-# Output filename (always .txt)
-OUTPUT_FILE="top-${NUM_PORTS}-${PROTOCOL_LOWER}-ports.txt"
+# Create directory for the format if it doesn't exist
+if [ ! -d "$FORMAT" ]; then
+    mkdir -p "$FORMAT"
+    echo -e "${CYAN}Created directory: ${YELLOW}$FORMAT/${NC}"
+fi
+
+# Output filename inside the format directory
+OUTPUT_FILE="$FORMAT/top-${NUM_PORTS}-${PROTOCOL_LOWER}-ports.txt"
 
 echo -e "${CYAN}Getting ${YELLOW}$NUM_PORTS ${CYAN}most common ${YELLOW}$PROTOCOL ${CYAN}ports in ${YELLOW}$FORMAT ${CYAN}format...${NC}"
 
@@ -140,5 +146,5 @@ echo -e "${CYAN}$PROTOCOL ports saved in: ${YELLOW}$OUTPUT_FILE${NC}"
 echo -e "${CYAN}Format: ${YELLOW}$FORMAT${NC}"
 
 # Copy content to clipboard using xclip
-xclip -selection clipboard < "$OUTPUT_FILE" 2>/dev/null
+xclip -selection clipboard < "$OUTPUT_FILE"
 echo -e "${CYAN}Content copied to clipboard ${YELLOW}✓${NC}"
