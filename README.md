@@ -1,4 +1,4 @@
-# GetTopPorts
+# getTopPorts
 A Bash script that extracts the most common ports from Nmap, saves them to a text file in two different formats, and automatically copies the output to the clipboard
 
 # Help panel
