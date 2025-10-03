@@ -13,10 +13,10 @@ FORMAT=""
 
 # Function to show usage
 show_usage() {
-    echo -e "${RED}Usage: ${NC}$0 --protocol <protocol> --number-of-ports <number> --format <format>"
+    echo -e "${RED}Usage: ${NC}$(basename $0) --protocol <protocol> --number-of-ports <number> --format <format>"
     echo -e "${CYAN}Available protocols: ${YELLOW}TCP, UDP, SCTP"
     echo -e "${CYAN}Available formats: ${YELLOW}one-per-line, inline"
-    echo -e "${CYAN}Example: ${NC}$0 --protocol TCP --number-of-ports 1000 --format one-per-line"
+    echo -e "${CYAN}Example: ${NC}$(basename $0) --protocol TCP --number-of-ports 1000 --format one-per-line"
     exit 1
 }
 
